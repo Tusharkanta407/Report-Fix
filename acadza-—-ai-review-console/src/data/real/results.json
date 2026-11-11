@@ -11,7 +11,7 @@
     },
     "route": "auto_apply",
     "confidence": 0.98,
-    "evidence": "The student claims the answer should be 50 V, and the solution also concludes 50 V using the formula V = sqrt(V_R^2 + (V_L - V_C)^2) with given values, resulting in 50 V. The independent solve confirms this calculation, also ending at 50 V. The stored key is C (130 V), which is incorrect. The correct answer is A (50 V).",
+    "evidence": "The student claims the answer should be 50V, but the key is C. The independent solve calculates the supply voltage as 50V using the formula V = sqrt(V_R^2 + (V_L - V_C)^2), which matches the stored solution's conclusion of 50V. The stored key is C (130V), which is incorrect. Both the independent solve and the solution agree on 50V, confirming the key should be A.",
     "student_reply": "You're right — the answer key was incorrect. The correct answer is (A) 50 V. Thanks for pointing that out!"
   },
   {
@@ -26,7 +26,7 @@
     },
     "route": "auto_apply",
     "confidence": 0.98,
-    "evidence": "The student claims the answer is wrong. The independent solve calculates the supply voltage using the formula \\( V = \\sqrt{V_R^2 + (V_L - V_C)^2} \\) and finds it to be 50 V, corresponding to option A. The stored solution also concludes with 50 V. However, the stored key is C (130 V). Both the independent solve and the solution agree on 50 V, so the key must be corrected to A.",
+    "evidence": "The student claims the answer is wrong. The independent solve calculates the supply voltage as 50 V using the formula V = √(V_R^2 + (V_L - V_C)^2), which matches the stored solution's conclusion of 50 V. The stored answer key incorrectly lists option C (130 V) as correct. Both the independent solve and the stored solution agree on 50 V, which corresponds to option A. The key must be changed to A.",
     "student_reply": "You're right — the answer key was incorrect. The correct answer is (A) 50 V. Thanks for pointing that out!"
   },
   {
@@ -41,8 +41,8 @@
     },
     "route": "auto_apply",
     "confidence": 0.98,
-    "evidence": "The student claims the answer should be 50 V instead of 130 V. The independent solve calculates the supply voltage using the formula V = sqrt(V_R^2 + (V_L - V_C)^2) and finds it to be 50 V, matching option A. The stored solution also concludes with 50 V. However, the stored key incorrectly lists option C (130 V) as the answer. The correct answer should be A (50 V).",
-    "student_reply": "You're right — the answer key was incorrect. The correct answer is 50 V (option A). Thanks for pointing that out!"
+    "evidence": "The student claims the answer should be 50 V, not 130 V. The independent solve calculates the supply voltage as \\( V = \\sqrt{40^2 + (60 - 30)^2} = 50 \\text{ V} \\), which matches the stored solution's conclusion of 50 V. The stored key is C (130 V), which is incorrect. Both the independent solve and the solution agree on 50 V, so the key should be changed to A.",
+    "student_reply": "You're right — the answer key was incorrect. The correct answer is (A) 50 V. Thanks for pointing that out!"
   },
   {
     "reportId": "R004",
@@ -56,8 +56,8 @@
     },
     "route": "auto_apply",
     "confidence": 0.98,
-    "evidence": "The student claims the answer should be 8225 N/m². The independent solve calculates the pressure using P = (1/3)ρ(v_rms)^2, resulting in 4800 N/m², which matches option D. The stored solution also concludes with 4800 N/m². However, the stored key is A (4556 N/m²). Both the independent solve and the solution agree on option D. The key should be changed to D.",
-    "student_reply": "You're right — the correct answer is 4800 N/m², which matches option D. Thanks for pointing this out!"
+    "evidence": "The student claims the answer should be 8225 N/m². The independent solve calculates the pressure using P = (1/3)ρ(v_rms)^2, resulting in 4800 N/m², which matches option D. The stored solution also concludes with 4800 N/m². However, the stored key is A (4556 N/m²). Both the independent solve and the solution agree on option D, indicating the key should be changed to D.",
+    "student_reply": "You're right, the answer key was incorrect. The correct pressure is 4800 N/m², which matches option D. Thanks for pointing this out!"
   },
   {
     "reportId": "R005",
@@ -71,8 +71,8 @@
     },
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "Student and the stored solution both give n=1. Face-centre charge q/2 contributes q/(4ε₀); corner charge 2q contributes q/(4ε₀); total Φ = q/(2ε₀) ⇒ n=1 when written as nq/(2ε₀). Live key is 2 (wrong). An independent solve final disagreed with that arithmetic and the stored solution. Correct correction: 2 → 1.",
-    "student_reply": "You're right — n should be 1. Total flux is q/(2ε₀), so the key goes from 2 to 1. Thanks for flagging!"
+    "evidence": "Student and the stored solution both give 1; the live key is 2. An independent solve proposed '5', which disagrees with the solution’s own final answer — prefer 1. Proposed correction: 2 → 1.",
+    "student_reply": "You're right. The answer key was wrong; it's (1). Fixed, thanks for flagging."
   },
   {
     "reportId": "R006",
@@ -82,8 +82,8 @@
     "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student noted that the edge length of the cube is missing. The independent solve assumed an initial volume of 1 m³, leading to a contraction of 0.05 mm³. The stored solution assumes a side length of 10 cm, resulting in a contraction of 50 mm³. The stored key is 50. The question should state the side length as 10 cm to match the solution and key.",
-    "student_reply": "You're right — the edge length of the cube was missing. We'll add that detail to clarify how to find the volume. Thanks for pointing it out!"
+    "evidence": "The student claims the edge length of the cube is missing. The independent solve assumes an edge length of 1 m to calculate the volume contraction, resulting in 0.05 mm³. The stored solution also uses an implicit volume of 1 m³, leading to a contraction of 50 mm³. The stored key is 50. The question should specify the cube's edge length as 1 m to match the solution's assumptions.",
+    "student_reply": "You're right — the edge length of the cube was missing. It should be assumed as 1 m for the volume calculation, which gives a contraction of 0.05 mm³. Thanks for pointing that out!"
   },
   {
     "reportId": "R007",
@@ -93,56 +93,52 @@
     "edit": null,
     "route": "no_change",
     "confidence": 0.95,
-    "evidence": "The student claims the inductance value is missing. The independent solve estimates the impedance as 60 ohm, matching option D, by assuming a typical inductance value. The stored solution calculates the impedance as 50 ohm using a specific inductance value of 95.5 mH, which is not given in the question. The stored key is C (50 ohm), but the independent solve supports D (60 ohm) as the correct answer. The key should be changed to D.",
+    "evidence": "The stored solution already ends at the live key (C). A separate solve suggested D, but we are not flipping the key on solver-alone evidence. Leave the answer as is unless faculty re-works the problem.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
     "reportId": "R008",
     "questionId": "60f742f6660d187cc13a8078",
-    "verdict": "no_error",
-    "repair": null,
+    "verdict": "defect",
+    "repair": "stem_data",
     "edit": null,
-    "route": "no_change",
+    "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student claims data is missing. The independent solve estimates the impedance as 60 ohm, matching option D, by assuming a reasonable inductive reactance. The stored solution calculates the impedance as 50 ohm using a specific inductance value of 95.5 mH, leading to option C. However, the independent solve's approach aligns with typical circuit analysis without specific inductance data, supporting option D. The stored key is C, but the correct answer should be D.",
-    "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
+    "evidence": "The student claims that data is missing, specifically the inductance value. The stored solution uses an inductance value of 95.5 mH, which is not provided in the question stem. The independent solve also notes the absence of the inductance value and estimates the impedance to be 60 ohms, matching option D. The stored key is C (50 ohms), but this relies on an unstated inductance value. The question is missing necessary data for a definitive solution.",
+    "student_reply": "You're right — the question is missing the inductance value. We'll add that in for clarity. Thanks for pointing it out!"
   },
   {
     "reportId": "R009",
     "questionId": "622f08d7b70e4b50e4500a1b",
-    "verdict": "no_error",
-    "repair": null,
+    "verdict": "defect",
+    "repair": "option_repair",
     "edit": null,
-    "route": "no_change",
-    "confidence": 0.96,
-    "evidence": "Solution-first: student claims 'D'; stored key is 'C'. Stop reason: stored solution and independent solve both match the key. Independent solve also agrees. No answer_key change — student dispute is wrong (form/rounding/option).",
-    "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
+    "route": "faculty_review",
+    "confidence": 0.95,
+    "evidence": "The student claims that option D is missing. The deterministic scan confirms that only options A, B, and C are present, with option D missing. The independent solve and the stored solution both conclude that the correct answer is option C (10 m/s). The stored key is C, which is correct. However, the absence of option D is a defect that needs to be addressed.",
+    "student_reply": "You're right, option D is missing from the question. We'll add it back in shortly. Thanks for pointing that out!"
   },
   {
     "reportId": "R010",
     "questionId": "622f08d7b70e4b50e4500a1b",
-    "verdict": "no_error",
-    "repair": null,
+    "verdict": "defect",
+    "repair": "option_repair",
     "edit": null,
-    "route": "no_change",
-    "confidence": 0.96,
-    "evidence": "Solution-first: student claims '3'; stored key is 'C'. Stop reason: stored solution and independent solve both match the key. Independent solve also agrees. No answer_key change — student dispute is wrong (form/rounding/option).",
-    "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
+    "route": "faculty_review",
+    "confidence": 0.92,
+    "evidence": "Student reports options are incomplete. The question HTML currently has 3 option(s); letter(s) D are missing. Faculty should author the missing option text — do not change the answer key yet.",
+    "student_reply": "You're right, one of the options is missing. We'll add the missing option text soon. Thanks for pointing that out!"
   },
   {
     "reportId": "R011",
     "questionId": "68e872546e45ba37dcc16bc0",
-    "verdict": "defect",
-    "repair": "option_repair",
-    "edit": {
-      "field": "question",
-      "find": "(C) <br />",
-      "replace": "(C) 1:1 <br />"
-    },
+    "verdict": "not_actionable",
+    "repair": null,
+    "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student reports that option C is blank, and the answer is C. The independent solve confirms that the correct ratio of forces is 1:1, which matches the intended answer for option C. The stored solution does not address the specific question about the ratio, but the independent solve and deterministic scans confirm the blank option C. The stored key is C, which is correct if option C is 1:1. Therefore, option C should be filled with '1:1'.",
-    "student_reply": "You're right — option C was blank, but it should have been marked as the correct answer. I've updated the question to reflect this. Thanks for pointing it out!"
+    "evidence": "The student reports that option C is blank, which is confirmed by deterministic scans showing option C as empty. The independent solve concludes that the correct ratio of forces is 1:1, which is not listed among the options. The stored solution does not address the ratio correctly and only states that forces are equal and opposite. The stored key is C, but option C is blank, and the correct answer is not present in the options. Therefore, the question is unsound as no correct option is provided.",
+    "student_reply": "Thanks for writing in. We couldn't spot a clear content issue — reply with the exact step that looked wrong if you can."
   },
   {
     "reportId": "R012",
@@ -200,16 +196,12 @@
     "reportId": "R016",
     "questionId": "6263d75bdd44e265ef926d97",
     "verdict": "defect",
-    "repair": "answer_key",
-    "edit": {
-      "field": "answer",
-      "find": "20",
-      "replace": "10"
-    },
+    "repair": "solution_fix",
+    "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student claims the answer should be 20 cm, but the independent solve finds the side of the cube to be 10 cm. The stored solution incorrectly concludes 40 cm due to a setup error in the buoyancy equation. The stored key is 20, which is also incorrect. Both the independent solve and the correct interpretation of the problem indicate the side should be 10 cm. The key should be updated to 10.",
-    "student_reply": "You're right — the solution incorrectly states 40 cm. The correct answer is 10 cm. Thanks for pointing this out!"
+    "evidence": "The student claims the solution states 40 cm but the answer is 20 cm. The independent solve finds the side of the cube to be 20 cm using buoyancy principles. The stored solution incorrectly concludes 40 cm due to a wrong equation setup. The stored key is 20, which matches the independent solve. The solution needs correction to reflect the correct calculation and result of 20 cm.",
+    "student_reply": "You're right — the solution incorrectly states 40 cm. The correct answer is 20 cm based on buoyancy principles. Thanks for pointing this out!"
   },
   {
     "reportId": "R017",
@@ -230,8 +222,8 @@
     "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student claims the solution belongs to another question. The independent solve calculates the kinetic energy using the de-Broglie wavelength formula and finds it to be 16.8 eV, matching option B. The stored solution also concludes with 16.8 eV but lacks clear steps and context. The stored key is B, which is correct. The solution needs clearer steps to match the question context.",
-    "student_reply": "You're right, the solution provided belongs to a different question. We'll correct this and ensure the right solution is available. Thanks for pointing it out!"
+    "evidence": "The student claims the solution belongs to another question. The independent solve calculates the kinetic energy using the de-Broglie wavelength formula and finds it to be 16.8 eV, matching option B. The stored solution ends at 16.8 eV but lacks coherent steps. The stored key is B. The solution needs rewriting to match the question's context.",
+    "student_reply": "You're right — the solution provided belongs to a different question. We'll correct this and ensure the right solution is available. Thanks for pointing it out!"
   },
   {
     "reportId": "R019",
@@ -241,8 +233,8 @@
     "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student claims the solution gives 5.47 angstrom, which is unrelated to the question. The independent solve correctly calculates the kinetic energy as 16.8 eV using the de-Broglie wavelength formula, matching option B. The stored solution ends at 16.8 eV but lacks clear steps and context. The stored key is B, which is correct. The solution needs rewriting for clarity.",
-    "student_reply": "You're right — the solution provided is unrelated to the question. The correct kinetic energy is 16.8 eV, which matches option B. Thanks for pointing this out!"
+    "evidence": "The student claims the solution gives 5.47 angstrom, unrelated to the question. The independent solve calculates the kinetic energy as 16.8 eV using the de-Broglie wavelength formula. The stored solution incorrectly presents unrelated numbers but concludes with 16.8 eV. The stored key is B, which matches the correct answer. The solution needs correction to show the proper calculation steps.",
+    "student_reply": "You're right — the solution provided an unrelated value. The correct kinetic energy using the de-Broglie wavelength formula is 16.8 eV. Thanks for pointing this out!"
   },
   {
     "reportId": "R020",
@@ -267,8 +259,8 @@
     },
     "route": "auto_apply",
     "confidence": 0.98,
-    "evidence": "The student claims that only option B is correct, but the question is marked as multiple correct (mcq). The independent solve confirms that the mean life of the nucleus is approximately 1.44 minutes, which corresponds to option B. The stored solution also concludes with option B. The stored key is B, and deterministic scans show the answer array is malformed with an empty entry, indicating a type mismatch. The question should be single correct (scq), not multiple correct (mcq).",
-    "student_reply": "You're right — this question was marked incorrectly as multiple correct. It should only allow option B as the correct answer. Thanks for pointing that out!"
+    "evidence": "The student claims that only option B is correct, but the question is marked as multiple correct (mcq). The independent solve confirms that the mean life \\( \\tau \\) is approximately 1.44 min, which corresponds to option B. The stored solution also concludes with option B. The stored key is B, and the deterministic scan shows an empty entry in the answer array, indicating a type mismatch. The question should be single correct (scq) as only B is correct.",
+    "student_reply": "You're right, this question was marked incorrectly as multiple correct. It should only allow option B as the correct answer. Thanks for pointing that out!"
   },
   {
     "reportId": "R022",
@@ -304,8 +296,8 @@
     "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student claims that the unit is not mentioned in the question. The question asks for the frictional force but does not specify the unit in which the answer should be provided. The stored solution calculates the frictional force as 20 N, and the stored answer key is 20, which implies the unit is Newtons. To clarify, the question should state the unit explicitly.",
-    "student_reply": "You're right — the unit for the frictional force wasn't mentioned in the question. We'll add that it's in Newtons (N). Thanks for pointing this out!"
+    "evidence": "The student claims that the unit is not mentioned in the question. The question asks for the frictional force but does not specify the unit in which the answer should be provided. The stored solution calculates the frictional force as 20 N, and the stored answer key is 20, which implies the unit is Newtons. To clarify, the question should specify the unit for the answer.",
+    "student_reply": "You're right, the unit for the frictional force wasn't mentioned in the question. It should specify that the answer is in Newtons (N). Thanks for pointing that out!"
   },
   {
     "reportId": "R025",
@@ -315,7 +307,7 @@
     "edit": null,
     "route": "faculty_review",
     "confidence": 0.95,
-    "evidence": "The student claims a figure is missing, which is confirmed by the deterministic scan noting the question refers to a figure but none is attached. The independent solve and stored solution both conclude that air flows from end 1 to end 2, decreasing the volume of the bubble at end 1, matching the stored key 'B'. However, the absence of the figure is a defect.",
+    "evidence": "The student claims that a figure is missing, which is confirmed by the deterministic scan noting the question refers to a figure but none is attached. The independent solve and stored solution both conclude that air flows from end 1 to end 2, decreasing the volume of the bubble at end 1, matching the stored key 'B'. However, the absence of the figure is a defect that needs addressing.",
     "student_reply": "Thanks for writing in. We couldn't spot a clear content issue — reply with the exact step that looked wrong if you can."
   },
   {
@@ -335,7 +327,7 @@
     "verdict": "no_error",
     "repair": null,
     "edit": null,
-    "route": "no_change",
+    "route": "faculty_review",
     "confidence": 0.99,
     "evidence": "This comment looks like an attempt to instruct the system, not a real content report. No change to the question.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
@@ -346,25 +338,21 @@
     "verdict": "no_error",
     "repair": null,
     "edit": null,
-    "route": "faculty_review",
+    "route": "no_change",
     "confidence": 0.95,
-    "evidence": "The student claims the answer should be tan inverse 2 (option A). The independent solve confirms that for the condition H=R, tan(θ)=4, leading to θ=tan^(-1)(4), which matches option B. The stored solution also concludes with θ=tan^(-1)(4). The stored answer key is B, which is correct. The student likely miscalculated or misunderstood the trigonometric identity used.",
+    "evidence": "The stored solution already ends at the live key (B). A separate solve suggested A, but we are not flipping the key on solver-alone evidence. Leave the answer as is unless faculty re-works the problem.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
     "reportId": "R029",
     "questionId": "68e8734442c06737d6e56da4",
-    "verdict": "defect",
-    "repair": "answer_key",
-    "edit": {
-      "field": "answer",
-      "find": "A",
-      "replace": "C"
-    },
-    "route": "faculty_review",
-    "confidence": 0.95,
-    "evidence": "The student claims the coefficient of friction should be 0.4. The independent solve finds the correct coefficient of friction to be 0.6, using the equations of motion correctly. The stored solution incorrectly assumes F = 10 N and calculates the coefficient of friction as 0.8. The stored answer key is A (0.8), but the correct answer is C (0.6). The key must change to C.",
-    "student_reply": "You're right, the answer key was incorrect. The correct coefficient of friction is 0.6, not 0.4. Thanks for pointing this out!"
+    "verdict": "no_error",
+    "repair": null,
+    "edit": null,
+    "route": "no_change",
+    "confidence": 0.96,
+    "evidence": "Solution-first: student claims '0.4'; stored key is 'A'. Stop reason: stored solution and independent solve both match the key. Independent solve also agrees. No answer_key change — student dispute is wrong (form/rounding/option).",
+    "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
     "reportId": "R030",
@@ -383,9 +371,9 @@
     "verdict": "no_error",
     "repair": null,
     "edit": null,
-    "route": "faculty_review",
+    "route": "no_change",
     "confidence": 0.95,
-    "evidence": "The student claims the answer should be 2 seconds. The independent solve finds the time when the dots align again is 8 seconds, but this is incorrect as the solve's final answer is 4 seconds. The stored solution also concludes that the time is 4 seconds. The stored answer key is 4, which matches both the solution and the independent solve. Therefore, the key is correct and the student's claim is incorrect.",
+    "evidence": "The stored solution already ends at the live key (4). A separate solve suggested 8, but we are not flipping the key on solver-alone evidence. Leave the answer as is unless faculty re-works the problem.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
@@ -433,7 +421,7 @@
     "edit": null,
     "route": "no_change",
     "confidence": 0.98,
-    "evidence": "The student claims that relaxin and inhibin are antagonistic, but this is incorrect. The independent solve confirms that relaxin and inhibin are not antagonistic; relaxin aids in childbirth by relaxing pelvic ligaments, while inhibin inhibits FSH secretion. The stored solution also concludes that option D is correct, as these hormones do not have opposing effects. The stored answer key is D, which matches both the independent solve and the solution. Therefore, the key is correct and should remain D.",
+    "evidence": "The student claims that relaxin and inhibin are antagonistic, but this is incorrect. The independent solve confirms that relaxin and inhibin are not antagonistic; relaxin is involved in childbirth, while inhibin inhibits FSH secretion. The stored solution incorrectly states insulin and glucagon are synergistic, but the independent solve correctly identifies them as antagonistic. The stored key is D, which matches the independent solve's conclusion that relaxin and inhibin are not antagonistic. Therefore, the key is correct.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
@@ -488,7 +476,7 @@
     "edit": null,
     "route": "no_change",
     "confidence": 0.98,
-    "evidence": "The student claims something is wrong with the question. The independent solve concludes that Golden rice (option C) is genetically modified to contain beta-carotene, a precursor of vitamin A, which helps prevent blindness associated with vitamin A deficiency. The stored solution also confirms this, stating that Golden rice is developed to prevent vitamin A deficiency. The stored answer key is 'C', which matches both the independent solve and the solution. Therefore, the question and answer key are correct.",
+    "evidence": "The student claims something is wrong without specifying. The independent solve concludes that Golden rice is the correct answer because it is genetically modified to contain beta-carotene, a precursor of vitamin A, which helps prevent blindness associated with vitamin A deficiency. The stored solution also concludes with Golden rice as the answer. The stored key is C, which corresponds to Golden rice. Therefore, the question and answer key are correct.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
@@ -499,7 +487,7 @@
     "edit": null,
     "route": "no_change",
     "confidence": 0.98,
-    "evidence": "The student comment is unintelligible and does not provide any specific claim. The independent solve confirms that Julius von Sachs is credited with providing evidence for the production of glucose in plants, matching the stored answer key 'A'. The stored solution also concludes with Julius von Sachs as the correct answer. The deterministic scan shows all options are present and correctly parsed. Therefore, the question and answer key are correct.",
+    "evidence": "The student comment is unintelligible and does not provide specific information. The independent solve confirms that Julius von Sachs is credited with providing evidence for the production of glucose in plants, matching the stored answer key 'A'. The stored solution also concludes with Julius von Sachs as the correct answer. The deterministic scan shows all options are present and correctly parsed. Therefore, the question and answer key are correct.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
@@ -521,7 +509,7 @@
     "edit": null,
     "route": "no_change",
     "confidence": 0.95,
-    "evidence": "The stored solution already ends at the live key (B). A separate solve suggested a different option, but we are not flipping the key on solver-alone evidence. Leave the answer as is unless faculty re-works the problem.",
+    "evidence": "The stored solution already ends at the live key (B). A separate solve suggested C, but we are not flipping the key on solver-alone evidence. Leave the answer as is unless faculty re-works the problem.",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   },
   {
@@ -530,9 +518,9 @@
     "verdict": "no_error",
     "repair": null,
     "edit": null,
-    "route": "faculty_review",
-    "confidence": 0.95,
-    "evidence": "The student claims the answer should be 22 V. The independent solve calculates the potential difference as 14 V using the equation \\( V_P - V_S = \\frac{7kQ}{8R} \\) and \\( \\frac{kQ}{R} = 16 \\), leading to \\( \\frac{7}{8} \\times 16 = 14 \\). The stored solution also concludes with 14 V. The stored answer key is 14, which matches both the independent solve and the solution. The student's claim of 22 V is incorrect.",
+    "route": "no_change",
+    "confidence": 0.96,
+    "evidence": "Solution-first: student claims '22'; stored key is '14'. Stop reason: stored solution and independent solve both match the key. Independent solve also agrees. No answer_key change — student dispute is wrong (form/rounding/option).",
     "student_reply": "Nice check. We went through the working again — it matches the key, so we're leaving the answer as is. Thanks for double-checking."
   }
 ]

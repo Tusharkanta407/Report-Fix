@@ -38,6 +38,21 @@ _ANSWERISH_CATS = {
     "solution_wrong",
     "unclear",
 }
+# Never treat "only 3 options showing" as an answer-key dispute.
+_STRUCTURAL_SKIP = {
+    "missing_option",
+    "blank_option",
+    "identical_options",
+    "figure_missing",
+    "display",
+    "app",
+    "language",
+    "spelling",
+    "exam_reference",
+    "markup_leak",
+    "wrong_chapter",
+    "syllabus",
+}
 
 
 def _claim_candidates(interpretation: Interpretation, hints: CommentHints) -> list[str]:
@@ -132,12 +147,15 @@ def try_solution_first_no_error(
 ) -> Optional[Proposal]:
     key = payload.answer_normalized
     qtype = payload.question_type
+    intents = set(hints.intent_hints or [])
+    cat = (interpretation.category or "").lower()
+    if intents & _STRUCTURAL_SKIP or cat in _STRUCTURAL_SKIP:
+        return None
+
     claims = _claim_candidates(interpretation, hints)
     if not _claims_differ_from_key(claims, key, qtype):
         return None
 
-    intents = set(hints.intent_hints or [])
-    cat = (interpretation.category or "").lower()
     if not (intents & _ANSWERISH_INTENTS or cat in _ANSWERISH_CATS or claims):
         return None
 

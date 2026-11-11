@@ -125,6 +125,57 @@ def _stored_key_independently_supported(ctx: GuardContext, payload: QuestionPayl
     return True
 
 
+def _working_concludes_value(working: Optional[str], value: str) -> bool:
+    """True if the solver's own working asserts `= <value>` (optional unit).
+
+    Catches self-contradictions like working `a = 20 cm` then final_answer `10`,
+    or `μ = 0.8` then final_answer `C`.
+    """
+    if not working or not value:
+        return False
+    raw = str(value).strip()
+    if not raw:
+        return False
+    # Search most of the working — finals often contradict in the last line only.
+    tail = working[-900:] if len(working) > 900 else working
+    escaped = re.escape(raw)
+    pat = re.compile(
+        rf"(?:=|\\approx)\s*{escaped}"
+        rf"(?:\s*(?:cm|mm|m|V|A|N|kg|g))?\b",
+        re.IGNORECASE,
+    )
+    return bool(pat.search(tail))
+
+
+def _option_text_for_letter(ctx: "GuardContext", letter: str) -> Optional[str]:
+    if not ctx.checks or not ctx.checks.options:
+        return None
+    want = (letter or "").strip().upper()
+    for opt in ctx.checks.options:
+        if (opt.letter or "").strip().upper() == want:
+            return (opt.text or "").strip() or None
+    return None
+
+
+def _working_supports_answer(ctx: GuardContext, answer: str) -> bool:
+    """Working concludes this answer — as a bare value or as an SCQ option's text.
+
+    Do NOT trust phrases like "correct option is (C)" alone — those are often the
+    hallucinated last line after arithmetic that already printed another value.
+    """
+    if not ctx.solver or not ctx.solver.working:
+        return False
+    working = ctx.solver.working
+    if _working_concludes_value(working, answer):
+        return True
+    # Letter key / proposed letter → match option body only (A → "0.8").
+    if len(answer.strip()) <= 2 and answer.strip().isalpha():
+        text = _option_text_for_letter(ctx, answer)
+        if text and _working_concludes_value(working, text):
+            return True
+    return False
+
+
 def _is_unit_scale_pair(a: str, b: str) -> bool:
     """True if a and b differ only by ×/÷ 10/100/1000 (e.g. 8 vs 0.08)."""
     try:
@@ -432,6 +483,42 @@ def decide(proposal: Proposal, ctx: GuardContext, taxonomy: dict[str, Any]) -> G
             rejections=rejections,
             downgrades=downgrades,
             independent_confirmation=True,
+        )
+
+    # Working-vs-final hallucination: arithmetic supports the STORED key, but final flipped away.
+    if (
+        repair == "answer_key"
+        and payload is not None
+        and new_answer is not None
+        and not answers_match(new_answer, payload.answer_normalized, payload.question_type)
+        and _solver_usable(ctx.solver)
+        and ctx.solver is not None
+        and _working_supports_answer(ctx, payload.answer_normalized)
+        and not _working_supports_answer(ctx, new_answer)
+    ):
+        key = payload.answer_normalized
+        rejections.append(
+            f"rejected answer_key flip to {new_answer!r}: solver working already concludes {key!r} "
+            f"(self-inconsistent final {ctx.solver.final_answer!r})"
+        )
+        return GuardDecision(
+            verdict="no_error",
+            repair=None,
+            edit=None,
+            route="no_change",
+            confidence=round(max(confidence, 0.9), 3),
+            rejections=rejections,
+            downgrades=downgrades
+            + ["solver working supports stored key; ignore contradictory final_answer"],
+            independent_confirmation=True,
+            faculty_evidence=(
+                f"The independent working itself gets the same result as the live key ({key}). "
+                f"The model’s final_answer {ctx.solver.final_answer!r} contradicts that arithmetic, "
+                f"so we are not changing the key to {new_answer}."
+            ),
+            faculty_note=(
+                f"Keep key = {key}. Working supports it; treat the final letter/value as a hallucination."
+            ),
         )
 
     # Solution-backed rewrite (Gauss trap): stored solution concludes X, key is Y≠X,

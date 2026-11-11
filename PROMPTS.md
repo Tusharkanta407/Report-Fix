@@ -35,7 +35,7 @@ Phase 3 — DECIDE
 | Step | File | Model role | Version |
 |---|---|---|---|
 | Interpreter | `engine/prompts/interpreter.md` | fast (mini) | v2 |
-| Solver (Physics) | `engine/prompts/solver_physics.md` | solver (strong, L2 only) | v2 |
+| Solver (Physics) | `engine/prompts/solver_physics.md` | solver (strong, L2 only) | v3 (FINAL_ANSWER LOCK) |
 | Solver (Chem/Bio/Maths) | `solver_chemistry.md` / `biology` / `maths` | solver | v1 |
 | Solution reader | `engine/prompts/solution_reader.md` | solver | v1 |
 | Comparator | `engine/prompts/comparator.md` | main (L2) | v3 |

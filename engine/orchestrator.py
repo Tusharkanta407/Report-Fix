@@ -359,6 +359,23 @@ def process_report_with_prep(
                 faculty_note=f"Refile chapter (currently “{chapter}”). Leave answer key as is.",
             )
             return _finalize(prep, dataset, client, work, prop, True, forced)
+        if cat in {"missing_option", "blank_option"}:
+            missing = prep.checks.missing_option_letters or prep.checks.blank_option_letters or ["D"]
+            letters = ", ".join(missing)
+            prop = Proposal(
+                verdict="defect",
+                repair="option_repair",
+                edit=None,
+                llm_confidence=0.92,
+                independent_confirmation=False,
+                checks=["deterministic_check"],
+                evidence=(
+                    f"Student reports incomplete options. Missing/blank letter(s): {letters}. "
+                    f"Faculty should add the option text — leave the answer key unchanged until then."
+                ),
+                faculty_note=f"Add or restore option(s): {letters}.",
+            )
+            return _finalize(prep, dataset, client, work, prop, True, forced)
         if cat in {"spelling", "exam_reference", "markup_leak", "syllabus", "app", "display", "language"}:
             # Fall through to comparator only if we somehow have no deterministic edit —
             # still forbid strong solve (work should be empty).

@@ -84,7 +84,10 @@ REPAIR_LINES = {
         "We'll correct the filing. Thanks for flagging!"
     ),
     "stem_data": "You're right — a required value was missing from the stem. We've added it. Thanks for flagging!",
-    "option_repair": "You're right — one of the options needed a fix. We've corrected it. Thanks!",
+    "option_repair": (
+        "You're right — an option looks missing or incomplete. "
+        "We'll add it. Thanks for flagging!"
+    ),
     "solution_fix": "You're right — there was an issue in the solution. We've corrected it. Thanks for flagging!",
     "solution_missing": "You're right — the solution needed work. We've updated it. Thanks for flagging!",
     "type_mismatch": "You're right — the question type was stored wrong. We've corrected it. Thanks!",

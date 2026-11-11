@@ -287,6 +287,24 @@ def try_deterministic_proposal(
                 evidence=f"Option(s) {letters} look blank or incomplete. Faculty should restore the option text.",
                 faculty_note=f"Fill blank option(s): {letters}.",
             )
+        if "missing_option" in intents or checks.missing_option_letters:
+            missing = checks.missing_option_letters or ["D"]
+            letters = ", ".join(missing)
+            present = len(checks.option_letters_found or [])
+            return Proposal(
+                verdict="defect",
+                repair="option_repair",
+                edit=None,
+                llm_confidence=0.92,
+                independent_confirmation=False,
+                checks=["deterministic_check"],
+                evidence=(
+                    f"Student reports options are incomplete. The question HTML currently has "
+                    f"{present} option(s); letter(s) {letters} are missing. "
+                    f"Faculty should author the missing option text — do not change the answer key yet."
+                ),
+                faculty_note=f"Add missing option(s): {letters}. Human-authored content required.",
+            )
         if "figure_missing" in intents or (checks.references_figure and not checks.has_images):
             return Proposal(
                 verdict="defect",

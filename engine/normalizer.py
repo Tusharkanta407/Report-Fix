@@ -61,6 +61,9 @@ def _claimed_values(text: str) -> list[str]:
     values: list[str] = []
     for m in re.finditer(r"(?:answer|ans|key|option|should be|hona chahiye|aana chahiye)\s*(?:is|should be|=|:)?\s*\(?([A-Da-d])\)?(?![A-Za-z])", text, re.IGNORECASE):
         values.append(m.group(1).upper())
+    # "only 3 options showing" — the digit is a count, not a claimed answer.
+    if re.search(r"\bonly\s*\d+\s*options?\b", text, re.IGNORECASE):
+        return values
     values.extend(re.findall(r"[-+]?\d+(?:\.\d+)?(?:\s*:\s*\d+(?:\.\d+)?)?", text))
     seen: list[str] = []
     for v in values:

@@ -387,11 +387,16 @@ export function buildQuestionCases(): QuestionCase[] {
       solverFinal.trim() !== '' &&
       proposedReplace.trim() !== '' &&
       solverFinal.trim().toUpperCase() !== proposedReplace.trim().toUpperCase();
+    // Prefer published evidence / faculty note over raw solver working — working often
+    // ends with a hallucinated "therefore (C)" line that confuses faculty in the UI.
     const academicProof = solverConflictsProposal
       ? facultyNote ||
         primary.evidence ||
         `Proposed key ${proposedReplace} follows the stored solution / student claim; solver final ${solverFinal} was rejected as inconsistent.`
-      : solverWorking || facultyNote || primary.evidence;
+      : facultyNote ||
+        primary.evidence ||
+        solverWorking ||
+        'No independent solver working was recorded for this case.';
     const lowRiskRepairs = new Set([
       'spelling',
       'noise',

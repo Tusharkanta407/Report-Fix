@@ -242,6 +242,75 @@ def test_option_repair_may_not_touch_stem(dataset, taxonomy):
     assert d.route == "faculty_review"
 
 
+def test_working_supports_key_blocks_hallucinated_final_flip(dataset, taxonomy):
+    """R016-style: working ends at a=20 (=key) but final_answer says 10."""
+    qid = "6263d75bdd44e265ef926d97"
+    working = (
+        "2a^2 = 800\na^2 = 400\na = 20 cm\nThus, the side of the cube is 10 cm. The final answer is 10."
+    )
+    d = decide(
+        proposal(
+            repair="answer_key",
+            edit={"field": "answer", "find": "20", "replace": "10"},
+            checks=["solver_agrees", "deterministic_check"],
+        ),
+        ctx(
+            dataset,
+            qid,
+            solver=SolverResult(
+                can_solve=True,
+                final_answer="10",
+                correct_options=[],
+                working=working,
+                confidence=0.95,
+                missing_information=[],
+                figure_required=False,
+                observations=[],
+            ),
+            reading=reading("40"),
+        ),
+        taxonomy,
+    )
+    assert d.verdict == "no_error"
+    assert d.edit is None
+    assert any("working already concludes" in r for r in d.rejections)
+
+
+def test_friction_working_0_8_blocks_flip_to_c(dataset, taxonomy):
+    """R029: working μ=0.8 (=A) but final says C (0.6)."""
+    qid = "68e8734442c06737d6e56da4"
+    working = (
+        "F = 90 N.\n90 - μ * 100 = 10\nμ * 100 = 80\nμ = 0.8.\n"
+        "The correct option is (C) 0.6."
+    )
+    d = decide(
+        proposal(
+            repair="answer_key",
+            edit={"field": "answer", "find": "A", "replace": "C"},
+            checks=["solver_agrees", "deterministic_check"],
+        ),
+        ctx(
+            dataset,
+            qid,
+            solver=SolverResult(
+                can_solve=True,
+                final_answer="C",
+                correct_options=["C"],
+                working=working,
+                confidence=0.95,
+                missing_information=[],
+                figure_required=False,
+                observations=[],
+            ),
+            reading=reading("A"),
+        ),
+        taxonomy,
+    )
+    assert d.verdict == "no_error"
+    assert d.edit is None
+    assert any("working already concludes" in r for r in d.rejections)
+
+
 def test_gauss_trap_rewrites_hallucinated_n5_to_solution_n1(dataset, taxonomy):
     """R005: solution+student say n=1; key is 2; solver final hallucinated 5."""
     qid = "68dea616d0cda73d07e93ae6"

@@ -47,7 +47,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-const LOCAL_STORAGE_KEY = 'acadza_ai_review_cases_v19_readme_shot';
+const LOCAL_STORAGE_KEY = 'acadza_ai_review_cases_v24_engine_regen';
 const THEME_STORAGE_KEY = 'acadza_theme_preference';
 
 function loadInitialCases(): QuestionCase[] {
