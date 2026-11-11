@@ -1,0 +1,7 @@
+pydantic>=2.7
+langchain>=1.0
+langchain-core>=1.0
+langchain-openai>=1.0
+python-dotenv>=1.0
+tiktoken>=0.7
+pytest>=8.0

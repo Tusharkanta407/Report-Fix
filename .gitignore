@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+output/.cache/
+output/single/
+output/offline/
+# scratch / probe / one-off patch scripts — keep results.json cases.json usage.json
+output/_*.py
+output/*.txt
+output/free_*.txt
+output/run_log.txt
+output/regen_*.txt

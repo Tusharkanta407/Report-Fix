@@ -1,0 +1,6 @@
+{
+  "name": "Acadza — AI Review Console",
+  "description": "Production AI review and faculty decision console for JEE & NEET academic error reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

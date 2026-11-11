@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom scrollbars for clean academic density */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* MathML typography and fraction readability */
+math {
+  font-family: "JetBrains Mono", "STIX Two Math", "Cambria Math", serif;
+  font-size: 1.05em;
+  letter-spacing: normal;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+math mfrac {
+  padding: 0 0.15em;
+}
+
+math msup > *:last-child,
+math msub > *:last-child {
+  font-size: 0.8em;
+}
