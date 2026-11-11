@@ -15,6 +15,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { caseLabel } from '../utils/caseLabel';
+import { LatexText } from './LatexText';
 
 export const CaseReviewWorkspace: React.FC = () => {
   const {
@@ -310,15 +311,15 @@ export const CaseReviewWorkspace: React.FC = () => {
                   {selectedCase.aiVerdict === 'defect' ? 'What went wrong?' : 'AI assessment'}
                 </span>
               </div>
-              <p
+              <LatexText
+                as="p"
+                text={selectedCase.issueExplanation}
                 className={`text-xs leading-relaxed font-medium ${
                   selectedCase.aiVerdict === 'defect'
                     ? 'text-red-950 dark:text-neutral-200'
                     : 'text-neutral-800 dark:text-neutral-200'
                 }`}
-              >
-                {selectedCase.issueExplanation}
-              </p>
+              />
             </div>
           </div>
         </div>
@@ -351,9 +352,11 @@ export const CaseReviewWorkspace: React.FC = () => {
               <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-semibold">
                 AI Finding
               </div>
-              <p className="text-xs sm:text-sm text-neutral-100 font-sans leading-relaxed">
-                {selectedCase.summaryLine}
-              </p>
+              <LatexText
+                as="p"
+                text={selectedCase.summaryLine}
+                className="text-xs sm:text-sm text-neutral-100 font-sans leading-relaxed"
+              />
             </div>
 
             {/* PROPOSED CORRECTION */}
@@ -423,8 +426,8 @@ export const CaseReviewWorkspace: React.FC = () => {
                   ? 'Deterministic check:'
                   : 'Independent academic proof:'}
               </div>
-              <div className="p-3 rounded-lg bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-900 dark:text-neutral-200 font-mono leading-relaxed whitespace-pre-wrap">
-                {selectedCase.independentAcademicVerification}
+              <div className="p-3 rounded-lg bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-900 dark:text-neutral-200 font-sans leading-relaxed whitespace-pre-wrap">
+                <LatexText text={selectedCase.independentAcademicVerification} />
               </div>
             </div>
 
@@ -433,10 +436,14 @@ export const CaseReviewWorkspace: React.FC = () => {
               <div className="font-bold text-neutral-900 dark:text-neutral-200">
                 Corroborating Evidence:
               </div>
-              {selectedCase.verificationEvidence.map((ev, i) => (
+                  {selectedCase.verificationEvidence.map((ev, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
-                  <span className="text-neutral-800 dark:text-neutral-200 font-medium">{ev}</span>
+                  <LatexText
+                    as="span"
+                    text={ev}
+                    className="text-neutral-800 dark:text-neutral-200 font-medium"
+                  />
                 </div>
               ))}
             </div>
@@ -453,8 +460,8 @@ export const CaseReviewWorkspace: React.FC = () => {
                 />
               </button>
               {isReasoningExpanded && (
-                <div className="mt-2 p-3 rounded-lg bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-900 dark:text-neutral-200 leading-relaxed font-sans">
-                  {selectedCase.detailedReasoning}
+                <div className="mt-2 p-3 rounded-lg bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-900 dark:text-neutral-200 leading-relaxed font-sans whitespace-pre-wrap">
+                  <LatexText text={selectedCase.detailedReasoning} />
                 </div>
               )}
             </div>

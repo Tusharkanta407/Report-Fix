@@ -42,3 +42,25 @@ math msup > *:last-child,
 math msub > *:last-child {
   font-size: 0.8em;
 }
+
+/* KaTeX inside AI findings / academic proof */
+.latex-text {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.latex-text .katex {
+  font-size: 1.05em;
+  color: inherit;
+}
+
+.latex-text .katex-display {
+  margin: 0.6em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.15em 0;
+}
+
+.dark .latex-text .katex {
+  color: inherit;
+}
