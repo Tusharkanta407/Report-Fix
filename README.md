@@ -21,7 +21,6 @@ Queue grouped by question, ordered by blast radius (sibling reports + academic r
 | Faculty console | [`acadza-—-ai-review-console/`](acadza-—-ai-review-console/) |
 | Product thinking | [`PRODUCT.md`](PRODUCT.md) |
 | Prompts + decisions | [`PROMPTS.md`](PROMPTS.md) |
-| Bonus unreported defects | [`output/bonus_unreported_defects.md`](output/bonus_unreported_defects.md) |
 
 ---
 
